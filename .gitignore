@@ -218,3 +218,9 @@ pip-log.txt
 ## Node dependecies
 #############
 node_modules/
+
+#############
+## Frankjs temp files
+#############
+jsonTemp.txt
+report-results/*.html
