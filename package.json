@@ -2,9 +2,10 @@
   "author": "Mauricio Adams <mauricio.adams@gmail.com>",
   "name": "frankjs",
   "description": "Web page performance report",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "bugs": {
-       "mail": "bugs@frankjs.org"
+       "mail": "bugs@frankjs.org",
+	   "web" : "http://github.com/mauricioadams/frankjs/issues"
   },
   "tags": [
     "report",

@@ -63,6 +63,7 @@
 			case "--report-template" :
 			case "-rt" :
 				frankArgs.reports = arg[1];
+				break;
 			
 			case "--custom-script-params" :
 			case "-csp" :
