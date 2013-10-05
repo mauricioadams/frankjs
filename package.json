@@ -1,0 +1,27 @@
+{
+  "author": "Mauricio Adams <mauricio.adams@gmail.com>",
+  "name": "frankjs",
+  "description": "Web page performance report",
+  "version": "0.0.1",
+  "bugs": {
+       "mail": "bugs@frankjs.org"
+  },
+  "tags": [
+    "report",
+	"performance"
+  ],
+  "repository": {
+	"type" : "git",
+    "url": "http://github.com/mauricioadams/frankjs.git"
+  },
+  "main": "frankjs.js",
+  "dependencies": {
+	"phantomjs": ">= 1.9",
+	"jade" : ""
+  },
+  "devDependencies": {},
+  "optionalDependencies": {},
+  "engines": {
+    "node": ">=0.10.18"
+  }
+}

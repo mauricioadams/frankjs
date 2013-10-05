@@ -1,0 +1,68 @@
+h1 Results for: 
+    = ' ' + result.address
+
+p
+  | Started at #{result.dateForHumans} 
+p
+  | Page loaded in 
+  = result.loadTime + ' ms'
+p 
+ | DOM ready in 
+ = result.domReadyTime + ' ms'
+p
+ | Window load in 
+ = result.windowReadyTime + ' ms'  
+p
+  = result.totalDOMElements + ' '
+  | DOM elements
+  
+h2 Page errors
+table(border=1)
+ tr
+  td Error code
+  td Description
+  td Url
+  
+ each error in result.errors
+  if error
+   tr
+    td
+     if error.code
+      |#{error.code}
+     else
+      | &nbsp;
+     td
+      if error.description
+       | #{error.description}
+      else
+       | &nbsp;  
+     td
+      if error.url 
+       | #{error.url}
+      else
+       | &nbsp;
+  
+h2 Resources request
+
+table(border=1) 
+  tr
+    td URL
+    td Size (Kb)
+    td Status
+
+  each resource in result.resources
+    if resource
+      tr
+        td 
+          if resource.url
+            | #{resource.url} 
+          else
+            | &nbsp;
+        td
+          if resource.bodySize
+            | #{resource.bodySize} Kb
+          else
+            | &nbsp;
+        td 
+          | #{resource.endReply.status} #{resource.endReply.statusText}
+        
