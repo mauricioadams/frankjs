@@ -122,21 +122,19 @@ if (system.args.length === 1) {
 			result.timingLoad = page.timingLoad;
 			result.windowReadyTime = page.timingLoad - page.timingStartTime;
 			
-			
 			//get total dom
 			result.totalDOMElements = page.evaluate(function () {
                 return document.getElementsByTagName("*").length;
             });
         }
-		
 		//json return too long :( , output in a txt
 	   try {
-			fs.write("jsonTemp.txt", JSON.stringify(result), 'w');
+			fs.write('jsontemp.txt', JSON.stringify(result), 'w');
+			console.log('txt');
+			phantom.exit();
 		} catch(e) {
-			console.log('0');
+			console.log('ERROR');
 			phantom.exit();
 		}
-		console.log('1');
-        phantom.exit();
     });
 }

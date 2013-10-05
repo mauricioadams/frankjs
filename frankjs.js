@@ -33,7 +33,6 @@
 	phantomjs = require('phantomjs'),
 	help = require('./utils/help'),
 	binPath = phantomjs.path,
-	defaultScript = true,
 	argSize = process.argv.length,
 	frankArgs = {
 		url : (process.argv[2].indexOf('http') !== 0) ? 'http://'+ process.argv[2] : process.argv[2],
@@ -56,7 +55,6 @@
 			
 			case "--custom-script" :
 			case "-cs" :
-				defaultScript = false;
 				frankArgs.scriptName = arg[1];
 				break;
 			
@@ -90,14 +88,26 @@
 			];
 			
 			//run phantomjs script - output should be json stringfy
-			childProcess.execFile(binPath, childArgs, function(err, output, stderr) {				
-				//default script load json object in a temptxt file (json too big for console.log)
-				if(defaultScript) {
-					result = fs.readFileSync('jsonTemp.txt', 'utf8');
+			childProcess.execFile(binPath, childArgs, function(err, output, stderr) {	
+				//remove line breaks
+				output = output.replace(/(\r\n|\n|\r)/gm,'');
+				
+				//reads json object from a temp json txt file if phantomjs output (console.log) === txt
+				result = (output === 'txt') ? fs.readFileSync('jsontemp.txt', 'utf8') : result = output;
+				
+				if(output === 'ERROR') {
+					console.log('PhantomJS script error');
+					process.exit(1);
+				}
+				
+				if(result.length === 0) {
+					console.log('Error: Result object empty');
+					process.exit(1);
 				}
 
 				result = JSON.parse(result);
 				reports = frankArgs.reports.split(",");
+				
 				//Reports
 				totalReports = reports.length;
 				for(i = 0; i < totalReports; i++)
