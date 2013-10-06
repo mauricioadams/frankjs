@@ -4,6 +4,7 @@ FRANKJS
 
 ## Installation
 Fork me on [github] or install node package using **npm install frankjs**
+
 Dependencies: PhantomJS and Jade template engine
 
 ## Usage
