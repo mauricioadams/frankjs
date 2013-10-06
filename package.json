@@ -1,7 +1,7 @@
 {
   "author": "Mauricio Adams <mauricio.adams@gmail.com>",
   "name": "frankjs",
-  "description": "Web page performance report",
+  "description": "Creates web page reports such as DOM ready time, pageload and page resources",
   "version": "0.0.3",
   "bugs": {
        "mail": "bugs@frankjs.org",
