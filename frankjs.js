@@ -38,16 +38,11 @@
 	if (process.argv.length === 2) {
 		console.log('Usage: node frankjs <URL> [options] (node frankjs --help to display options)');
 	} else {
-		var frankArgs = {
-			url : (process.argv[2].indexOf('http') !== 0) ? 'http://'+ process.argv[2] : process.argv[2],
-			isHelp : false,
-			scriptName : 'frankjs-phantomjs-script',
-			sendReport : false,
-			reportTo: false,
-			reports : 'default',
-			scriptParams : ''
-		};
-	
+		//load config
+		var frankArgs = JSON.parse(fs.readFileSync('config-files/default.json', 'utf8'));
+		frankArgs.url = (process.argv[2].indexOf('http') !== 0) ? 'http://'+ process.argv[2] : process.argv[2];
+		frankArgs.isHelp = false;
+		
 		//TODO : Support json package load with arguments
 		for (i = 0; i < argSize; i += 1) {
 			arg = process.argv[i].split("=");
@@ -59,11 +54,13 @@
 				
 				case "--custom-script" :
 				case "-cs" :
+					//TODO CHECK IF FILE EXISTS
 					frankArgs.scriptName = arg[1];
 					break;
 				
 				case "--report-template" :
 				case "-rt" :
+					//TODO CHECK IF FILE EXISTS
 					frankArgs.reports = arg[1];
 					break;
 				
@@ -72,16 +69,23 @@
 					frankArgs.scriptParams = arg[1];
 					break;
 					
+				case "--from-file" :
+				case "-ff" :
+					//TODO CHECK IF IT EXISTS
+					var fileArgs = JSON.parse(fs.readFileSync('config-files/'+ arg[1] +'.json', 'utf8')), key;
+					for (key in fileArgs) {
+						frankArgs[key] = fileArgs[key];
+					}					
+				break;
+					
 				default : '';
 			}
 		}
-	
+
 		if(frankArgs.isHelp) {
 			help.show();
 		} else {
 			//some magic
-			
-			//check if script file exists - TODO
 			
 			var childArgs = [
 			  path.join(__dirname, 'phantomjs-scripts', frankArgs.scriptName + '.js'),

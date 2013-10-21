@@ -1,0 +1,7 @@
+{
+	"scriptName" : "frankjs-phantomjs-script",
+	"sendReport" : false,
+	"reportTo": false,
+	"reports" : "default",
+	"scriptParams" : ""
+}

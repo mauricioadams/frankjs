@@ -22,6 +22,12 @@ Output: report files named report-dump-json-**SETID**.html and report-my-custom-
 
 **SETID** = Unique identifier for your set of reports
 
+## Config options
+
+Default options are located in default.json in config-files folder, you can override any default option or create your custom config file for a specific report.
+To load your json config file use **-ff=FILENAME** option (must be in config-files folder).
+Any attribute in json config file will be mapped in frankArgs object, just in case you want to add any awesome new functionality. 
+
 ## Custom PhantomJS script
 
 FRANKJS has a default PhantomJS script but you can run any script.
@@ -42,6 +48,14 @@ A few items for future releases, maybe you can help me to develop some of them :
 ## Questions? Suggestions?
 **mauricio@frankjs.org** or [@mauricioadams]
 
+## Changelog
+0.0.4 
+- Adding console messages
+- Fixing load time for resources
+- Adding json default file
+- Adding json config file (-ff) support to override default options and new properties
+
+[Jade template engine]: http://jade-lang.com/
 [github]: https://github.com/mauricioadams/frankjs
 [FRANKJS]: http://frankjs.org
 [@mauricioadams]: http://twitter.com/mauricioadams

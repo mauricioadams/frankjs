@@ -23,6 +23,7 @@ module.exports = {
 				'  -csp, --custom-script-params  specify any additional options for PhantomJS or PhantomJS custom script (https://github.com/ariya/phantomjs)',
 				'  -rt, --report-template        specify jade templates for report (report-templates folder)',
 				'                                for multiple reports use "," (comma-delimited)',
+				'  -ff, --from-file              Load options from a json file (config-files folder)	',
 				'',
 				' Examples:',
 				'  frankjs google.com -rt=dump-json',
