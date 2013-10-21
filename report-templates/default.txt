@@ -15,7 +15,7 @@ p
 p
   = result.totalDOMElements + ' '
   | DOM elements
-  
+
 h2 Page errors
 table(border=1)
  tr
@@ -41,6 +41,11 @@ table(border=1)
        | #{error.url}
       else
        | &nbsp;
+
+h2 Console messages
+each msg in result.consolemsg
+ if msg
+  p= msg
   
 h2 Resources request
 
@@ -48,6 +53,7 @@ table(border=1)
   tr
     td URL
     td Size (Kb)
+    td Load time (ms)
     td Status
 
   each resource in result.resources
@@ -61,6 +67,11 @@ table(border=1)
         td
           if resource.bodySize
             | #{resource.bodySize} Kb
+          else
+            | &nbsp;
+        td
+          if resource.loadTime
+            | #{resource.loadTime} ms
           else
             | &nbsp;
         td 

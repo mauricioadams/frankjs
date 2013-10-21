@@ -33,6 +33,7 @@ var page = require('webpage').create(),
 //create result
 result.errors = [];
 result.resources = [];
+result.consolemsg = [];
 	
 //todo
 //search for social tags, opengraph, twitter and important metatags (like keywords and content)
@@ -42,7 +43,6 @@ result.resources = [];
 	
 //adds dom ready event after page initialize
 page.onInitialized = function () {
-	
 	page.timingStartTime = page.evaluate(function () {
 		(function () {
 			//domready
@@ -53,6 +53,11 @@ page.onInitialized = function () {
 		return Date.now();
 	});
 };	
+
+//watch console output
+page.onConsoleMessage = function (msg) {
+	result.consolemsg.push(msg);
+}
 
 //watch page resources request
  page.onResourceRequested = function (req) {
@@ -74,7 +79,7 @@ page.onResourceReceived = function (res) {
     
 	if (res.stage === 'end') {
         result.resources[res.id].endReply = res;
-		result.resources[res.id].loadTime =  result.resources[res.id].loadTime - res.time;
+		result.resources[res.id].loadTime =   Date.now() - result.resources[res.id].loadTime;
     }
 };
 

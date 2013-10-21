@@ -33,48 +33,49 @@
 	phantomjs = require('phantomjs'),
 	help = require('./utils/help'),
 	binPath = phantomjs.path,
-	argSize = process.argv.length,
-	frankArgs = {
-		url : (process.argv[2].indexOf('http') !== 0) ? 'http://'+ process.argv[2] : process.argv[2],
-		isHelp : false,
-		scriptName : 'frankjs-phantomjs-script',
-		sendReport : false,
-		reportTo: false,
-		reports : 'default',
-		scriptParams : ''
-	};
-	
-	//TODO : Support json package load with arguments
-	for (i = 0; i < argSize; i += 1) {
-		arg = process.argv[i].split("=");
-		switch(arg[0]) {
-			case "--help" : 
-			case "-h" : 
-				frankArgs.isHelp = true; 
-				break;
-			
-			case "--custom-script" :
-			case "-cs" :
-				frankArgs.scriptName = arg[1];
-				break;
-			
-			case "--report-template" :
-			case "-rt" :
-				frankArgs.reports = arg[1];
-				break;
-			
-			case "--custom-script-params" :
-			case "-csp" :
-				frankArgs.scriptParams = arg[1];
-				break;
-				
-			default : '';
-		}
-	}
+	argSize = process.argv.length;
 	
 	if (process.argv.length === 2) {
-		console.log('Usage: node frankjs <some URL> <options> (node frankjs --help to display options)');
+		console.log('Usage: node frankjs <URL> [options] (node frankjs --help to display options)');
 	} else {
+		var frankArgs = {
+			url : (process.argv[2].indexOf('http') !== 0) ? 'http://'+ process.argv[2] : process.argv[2],
+			isHelp : false,
+			scriptName : 'frankjs-phantomjs-script',
+			sendReport : false,
+			reportTo: false,
+			reports : 'default',
+			scriptParams : ''
+		};
+	
+		//TODO : Support json package load with arguments
+		for (i = 0; i < argSize; i += 1) {
+			arg = process.argv[i].split("=");
+			switch(arg[0]) {
+				case "--help" : 
+				case "-h" : 
+					frankArgs.isHelp = true; 
+					break;
+				
+				case "--custom-script" :
+				case "-cs" :
+					frankArgs.scriptName = arg[1];
+					break;
+				
+				case "--report-template" :
+				case "-rt" :
+					frankArgs.reports = arg[1];
+					break;
+				
+				case "--custom-script-params" :
+				case "-csp" :
+					frankArgs.scriptParams = arg[1];
+					break;
+					
+				default : '';
+			}
+		}
+	
 		if(frankArgs.isHelp) {
 			help.show();
 		} else {
