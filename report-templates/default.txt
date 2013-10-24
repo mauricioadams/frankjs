@@ -76,4 +76,8 @@ table(border=1)
             | &nbsp;
         td 
           | #{resource.endReply.status} #{resource.endReply.statusText}
-        
+
+h2 Page cookies
+each cookie in result.cookies
+ if cookie
+  p= cookie        

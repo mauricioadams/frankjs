@@ -131,6 +131,10 @@ if (system.args.length === 1) {
 			result.totalDOMElements = page.evaluate(function () {
                 return document.getElementsByTagName("*").length;
             });
+			
+			result.cookies = page.evaluate(function () {
+				return document.cookie.split(';');
+			});
         }
 		//json return too long :( , output in a txt
 	   try {
