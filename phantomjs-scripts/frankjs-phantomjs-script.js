@@ -28,7 +28,7 @@ var page = require('webpage').create(),
     system = require('system'),
 	fs = require('fs'),
 	result = {},
-    t;
+    totalCookies,i,t;
 
 //create result
 result.errors = [];
@@ -101,7 +101,7 @@ if (system.args.length === 1) {
 } else {
 	var now = new Date();
     result.startTime = Date.now();
-	result.dateForHumans = now.getMonth() + '/' + now.getDate() + '/' + now.getFullYear() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
+	result.dateForHumans = now.getMonth() + 1 + '/' + now.getDate() + '/' + now.getFullYear() + ' ' + now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds();
 	result.date = now.toJSON();
 	result.address = system.args[1];
     page.open(result.address, function (status) {
@@ -135,6 +135,14 @@ if (system.args.length === 1) {
 			result.cookies = page.evaluate(function () {
 				return document.cookie.split(';');
 			});
+			totalCookies = result.cookies.length;
+			for(i = 0; i < totalCookies; i++) {
+				var cookieObj = {};
+				var cookie = result.cookies[i];
+				cookieObj.name = cookie.split(/=(.+)?/)[0];
+				cookieObj.value = cookie.split(/=(.+)?/)[1];
+				result.cookies[i] = cookieObj;
+			}
         }
 		//json return too long :( , output in a txt
 	   try {

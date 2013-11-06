@@ -49,6 +49,12 @@ A few items for future releases, maybe you can help me to develop some of them :
 **mauricio@frankjs.org** or [@mauricioadams]
 
 ## Changelog
+0.0.5 
+- Adding page cookies
+- Adding some styles for default report
+- (Fix) getMonth + 1, January is 0
+- (Change) Adding table style for console msg in default report
+
 0.0.4 
 - Adding console messages
 - Fixing load time for resources

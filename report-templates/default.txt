@@ -1,3 +1,31 @@
+style.
+ html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;font-size:62.5%;-webkit-tap-highlight-color:rgba(0,0,0,0);}
+ body{font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;font-size:14px;line-height:1.428571429;color:#333;background-color:#fff;margin:10px;}
+ table{border-collapse:collapse;border-spacing:0;max-width:100%;background-color:transparent;}
+ *,:before,:after{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box;}
+ a{color:#428bca;text-decoration:none;}
+ a:hover,a:focus{color:#2a6496;text-decoration:underline;}
+ a:focus{outline:5px auto 0;outline-offset:-2px;}
+ hr{margin-top:20px;margin-bottom:20px;border:0;border-top:1px solid #eee;}
+ p{margin:0 0 10px;}
+ h1,h2{font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;font-weight:500;line-height:1.1;margin-top:20px;margin-bottom:10px;}
+ h1{font-size:36px;}
+ h2{font-size:30px;}
+ th{text-align:left;}
+ .table{width:100%;margin-bottom:20px;}
+ .table thead > tr > th,.table tbody > tr > th,.table tfoot > tr > th,.table thead > tr > td,.table tbody > tr > td,.table tfoot > tr > td{line-height:1.428571429;vertical-align:top;border-top:1px solid #ddd;padding:8px;}
+ .table thead > tr > th{vertical-align:bottom;border-bottom:2px solid #ddd;}
+ .table caption + thead tr:first-child th,.table colgroup + thead tr:first-child th,.table thead:first-child tr:first-child th,.table caption + thead tr:first-child td,.table colgroup + thead tr:first-child td,.table thead:first-child tr:first-child td{border-top:0;}
+ .table tbody + tbody{border-top:2px solid #ddd;}
+ .table .table{background-color:#fff;}
+ .table-condensed thead > tr > th,.table-condensed tbody > tr > th,.table-condensed tfoot > tr > th,.table-condensed thead > tr > td,.table-condensed tbody > tr > td,.table-condensed tfoot > tr > td{padding:5px;}
+ .table-bordered > thead > tr > th,.table-bordered > thead > tr > td{border-bottom-width:2px;}
+ .table-striped > tbody > tr:nth-child(odd) > td,.table-striped > tbody > tr:nth-child(odd) > th{background-color:#f9f9f9;}
+ .table-hover > tbody > tr:hover > td,.table-hover > tbody > tr:hover > th{background-color:#f5f5f5;}
+ table col[class*=col-]{float:none;display:table-column;}
+ table td[class*=col-],table th[class*=col-]{float:none;display:table-cell;}
+ .table-bordered,.table-bordered > thead > tr > th,.table-bordered > tbody > tr > th,.table-bordered > tfoot > tr > th,.table-bordered > thead > tr > td,.table-bordered > tbody > tr > td,.table-bordered > tfoot > tr > td{border:1px solid #ddd;}
+
 h1 Results for: 
     = ' ' + result.address
 
@@ -17,67 +45,91 @@ p
   | DOM elements
 
 h2 Page errors
-table(border=1)
- tr
-  td Error code
-  td Description
-  td Url
-  
- each error in result.errors
-  if error
-   tr
-    td
-     if error.code
-      |#{error.code}
-     else
-      | &nbsp;
+table.table.table-bordered.table-striped
+ thead
+  tr
+   th Error code
+   th Description
+   th Url
+ tbody 
+  each error in result.errors
+   if error
+    tr
      td
-      if error.description
-       | #{error.description}
-      else
-       | &nbsp;  
-     td
-      if error.url 
-       | #{error.url}
+      if error.code
+       |#{error.code}
       else
        | &nbsp;
+      td
+       if error.description
+        | #{error.description}
+       else
+        | &nbsp;  
+      td
+       if error.url 
+        | #{error.url}
+       else
+        | &nbsp;
 
 h2 Console messages
-each msg in result.consolemsg
- if msg
-  p= msg
+table.table.table-bordered.table-striped 
+ thead 
+  tr
+   th Message
+ tbody
+  each msg in result.consolemsg
+   if msg
+    tr 
+     td 
+      | #{msg}
   
 h2 Resources request
 
-table(border=1) 
-  tr
-    td URL
-    td Size (Kb)
-    td Load time (ms)
-    td Status
-
-  each resource in result.resources
-    if resource
-      tr
-        td 
+table.table.table-bordered.table-striped 
+  thead 
+   tr
+    th URL
+    th Size (Kb)
+    th Load time (ms)
+    th Status
+  tbody
+   each resource in result.resources
+     if resource
+       tr
+         td 
           if resource.url
-            | #{resource.url} 
+           | #{resource.url} 
           else
-            | &nbsp;
-        td
+           | &nbsp;
+         td
           if resource.bodySize
             | #{resource.bodySize} Kb
           else
             | &nbsp;
-        td
+         td
           if resource.loadTime
             | #{resource.loadTime} ms
           else
             | &nbsp;
-        td 
+         td 
           | #{resource.endReply.status} #{resource.endReply.statusText}
 
 h2 Page cookies
-each cookie in result.cookies
- if cookie
-  p= cookie        
+table.table.table-bordered.table-striped 
+  thead 
+   tr
+    th Name
+    th Value
+  tbody
+   each cookie in result.cookies
+    tr
+     td
+      if cookie.name
+       | #{cookie.name}
+      else
+       | &nbsp;
+     td
+      if cookie.value
+       | #{cookie.value}
+      else
+       | &nbsp;     
