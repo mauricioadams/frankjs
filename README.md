@@ -49,6 +49,9 @@ A few items for future releases, maybe you can help me to develop some of them :
 **mauricio@frankjs.org** or [@mauricioadams]
 
 ## Changelog
+0.0.6 
+- (Fix) "sucess" typo
+
 0.0.5 
 - Adding page cookies
 - Adding some styles for default report

@@ -142,7 +142,7 @@
 				}
 		
 				if(!frankArgs.sendReport) {
-					console.log('Report created with sucess:');
+					console.log('Report created with success:');
 					console.log(files.join('\n'));
 				}
 				else {
