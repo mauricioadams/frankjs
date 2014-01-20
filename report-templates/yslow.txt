@@ -39,7 +39,7 @@ p
 p
  | The page has a total of #{result.r_c} HTTP requests and a total weight of #{toKB(result.w_c)} KB with primed cache
 
-
+h2 Empty cache
 table.table.table.-bordered.table-striped
  thead
   tr
@@ -55,6 +55,24 @@ table.table.table.-bordered.table-striped
      | #{stat.r}
     td
      | #{toKB(stat.w)} KB
+
+h2 Primed cache
+table.table.table.-bordered.table-striped
+ thead
+  tr
+   th Type
+   th Requests
+   th Size
+ tbody
+  each stat,index in result.stats_c
+   tr
+    td  
+     | #{index}
+    td 
+     | #{stat.r}
+    td
+     | #{toKB(stat.w)} KB
+
 
 h1 Grade
 
