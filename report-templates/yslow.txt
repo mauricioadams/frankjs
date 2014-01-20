@@ -26,16 +26,52 @@ style.
  table td[class*=col-],table th[class*=col-]{float:none;display:table-cell;}
  .table-bordered,.table-bordered > thead > tr > th,.table-bordered > tbody > tr > th,.table-bordered > tfoot > tr > th,.table-bordered > thead > tr > td,.table-bordered > tbody > tr > td,.table-bordered > tfoot > tr > td{border:1px solid #ddd;}
 
+- var toKB = function(s) { return (s / 1024).toFixed(2); }
+
 h1 Results for:
  = ' ' + result.u
 p
  | Overall performance score 
  = result.o + ' (' + result.i + ' ruleset) loadtime ' + result.lt + ' (ms)'
+p
+ | The page has a total of #{result.r} HTTP requests and a total weight of #{toKB(result.w)} KB with empty cache
+
+p
+ | The page has a total of #{result.r_c} HTTP requests and a total weight of #{toKB(result.w_c)} KB with primed cache
+
+
+table.table.table.-bordered.table-striped
+ thead
+  tr
+   th Type
+   th Requests
+   th Size
+ tbody
+  each stat,index in result.stats
+   tr
+    td  
+     | #{index}
+    td 
+     | #{stat.r}
+    td
+     | #{toKB(stat.w)} KB
 
 h1 Grade
-each test, index in result.g
- p= test.score + ' ('+index+') '
-  if (result.dictionary.rules[index].name)
-   |#{result.dictionary.rules[index].name}
+
+table.table.table.-bordered.table-striped
+ thead
+  tr
+   th Grade
+   th Type
+ tbody
+  each test, index in result.g
+   tr
+    td
+     | #{test.score}
+    td 
+     | (#{index}) 
+     if (result.dictionary.rules[index].name)
+      |#{result.dictionary.rules[index].name}
+  
  
 
