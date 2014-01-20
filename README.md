@@ -51,6 +51,9 @@ A few items for future releases, maybe you can help me to develop some of them :
 ## Changelog
 0.0.6 
 - (Fix) "sucess" typo
+- (Fix) Custom script params -csp 
+- Adding YSlow 3.1.8 and simple report
+
 
 0.0.5 
 - Adding page cookies

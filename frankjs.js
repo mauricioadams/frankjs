@@ -89,7 +89,7 @@
 			
 			var childArgs = [
 			  path.join(__dirname, 'phantomjs-scripts', frankArgs.scriptName + '.js'),
-			  frankArgs.url + frankArgs.scriptParams
+			  frankArgs.url, frankArgs.scriptParams
 			];
 			
 			//run phantomjs script - output should be json stringfy
