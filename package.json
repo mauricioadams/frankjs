@@ -2,7 +2,7 @@
   "author": "Mauricio Adams <mauricio.adams@gmail.com>",
   "name": "frankjs",
   "description": "Creates web page reports such as DOM ready time, pageload and page resources",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "bugs": {
        "mail": "bugs@frankjs.org",
 	   "web" : "http://github.com/mauricioadams/frankjs/issues"
