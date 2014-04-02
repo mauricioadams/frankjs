@@ -37,11 +37,17 @@ Script must be in phantomjs-scripts folder and must return one valid stringified
 Reports are created using [Jade template engine] and must be in report-templates folder.
 Each template receives a result JSON so you can iterate in Jade file.
 
+## YSlow script and report
+FrankJS 0.6 has YSlow PhantomJS script and report package, you can run report using: 
+```
+node frankjs google.com -rt=yslow -cs=yslow -csp=--dict
+```
+
 ## Roadmap (TODO)
 A few items for future releases, maybe you can help me to develop some of them :)
 - Nice style for default report 
 - SEO report (some code for default PhantomJS script and report template)
-- Send reports feature (email and any other shell commands - reports in "files" array
+- Send reports feature (email and any other shell commands - reports in "files" array)
 - Notification feature (Define max value for properties like DOM ready time, resource sizes, pageload, etc... and notify if higher)
 - Lots of useful reports 
 
@@ -53,7 +59,7 @@ A few items for future releases, maybe you can help me to develop some of them :
 - (Fix) "sucess" typo
 - (Fix) Custom script params -csp 
 - Adding YSlow 3.1.8 and simple report
-
+- Adding default report styles (css) as include (includes/_styles)
 
 0.0.5 
 - Adding page cookies

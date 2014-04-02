@@ -127,9 +127,12 @@
 					  }
 					  return data;
 					});
-					
+					var options = {};
+					options.globals = {};
+					options.filename = reportFile;
+					//console.log(path.join(__dirname, 'report-templates'));
 					//parse jade template
-					var fn = jade.compile(template);
+					var fn = jade.compile(template, options);
 					var htmlOutput = fn({result: result});
 					
 					//add json dump for archive and future comparison
