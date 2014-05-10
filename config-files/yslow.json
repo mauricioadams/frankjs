@@ -1,0 +1,7 @@
+{
+	"scriptName" : "yslow",
+	"sendReport" : false,
+	"reportTo": false,
+	"reports" : "yslow",
+	"scriptParams" : "--dict"
+}

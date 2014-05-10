@@ -55,6 +55,10 @@ A few items for future releases, maybe you can help me to develop some of them :
 **mauricio@frankjs.org** or [@mauricioadams]
 
 ## Changelog
+0.0.7 
+- (Fix) Yslow report css class for table
+- Adding config-file for yslow bundle (frankjs google.com -ff=yslow)
+
 0.0.6 
 - (Fix) "sucess" typo
 - (Fix) Custom script params -csp 
