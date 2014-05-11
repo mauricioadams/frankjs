@@ -58,6 +58,7 @@ A few items for future releases, maybe you can help me to develop some of them :
 0.0.7 
 - (Fix) Yslow report css class for table
 - Adding config-file for yslow bundle (frankjs google.com -ff=yslow)
+- Adding Yslow grade components to report
 
 0.0.6 
 - (Fix) "sucess" typo

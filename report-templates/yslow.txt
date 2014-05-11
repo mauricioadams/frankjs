@@ -1,8 +1,9 @@
 include includes/_styles
 - var toKB = function(s) { return (s / 1024).toFixed(2); }
+- var formatTxt = function(s) { return unescape(s); }
 
 h1 Results for:
- = ' ' + result.u
+ |  #{formatTxt(result.u)}
 p
  | Overall performance score 
  = result.o + ' (' + result.i + ' ruleset) loadtime ' + result.lt + ' (ms)'
@@ -63,6 +64,12 @@ table.table.table-bordered.table-striped
      | (#{index}) 
      if (result.dictionary.rules[index].name)
       |#{result.dictionary.rules[index].name}
-  
- 
+     if (test.message)
+      p	 
+       |#{test.message}
+       if (test.components != null)
+        each component, index in test.components
+         p
+          |#{index} -  #{formatTxt(component)}
+     
 
